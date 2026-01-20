@@ -22,7 +22,9 @@ jobs:
           sudo dpkg -i hugo_0.154.5_linux-amd64.deb
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Checkout 
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6.0.2
+        with:
+          submodules: true
 
       - name: Build Hugo Website
         run: hugo build -b $WEBSITE_URL -d build
