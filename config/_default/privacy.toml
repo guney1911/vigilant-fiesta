@@ -1,0 +1,23 @@
+[privacy.disqus]
+  disable = true
+[privacy.googleAnalytics]
+  disable = true
+  respectDoNotTrack = true
+[privacy.instagram]
+  disable = true
+  simple = true
+[privacy.twitter]
+  disable = true
+  enableDNT = true
+  simple = false
+[privacy.vimeo]
+  disable = true
+  enableDNT = true
+  simple = false
+[privacy.x]
+  disable = true
+  enableDNT = true
+  simple = false
+[privacy.youTube]
+  disable = true
+  privacyEnhanced = false
