@@ -18,8 +18,8 @@ jobs:
       - name: Get Hugo
         run: |
           sudo apt update
-          sudo apt install hugo
-          
+          wget https://github.com/gohugoio/hugo/releases/download/v0.154.5/
+          sudo dpkg -i hugo_0.154.5_linux-amd64.deb
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Checkout 
         uses: actions/checkout@v4
