@@ -28,11 +28,12 @@ jobs:
         if: ${{steps.hugo.outputs.cache-hit != 'true'}}
         run: |
           wget https://github.com/gohugoio/hugo/releases/download/v$HUGO_VERSION/hugo_"$HUGO_VERSION"_linux-amd64.deb
-          
+          ls
       - name: Install Hugo
         run: |
           sudo apt update
           sudo dpkg -i hugo_"$HUGO_VERSION"_linux-amd64.deb
+          ls
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Checkout 
         uses: actions/checkout@v6.0.2
@@ -42,7 +43,7 @@ jobs:
       - name: Build Hugo Website
         run: |
           hugo build -b $URL -d build
-
+          ls
       - name: Package Website
         run: tar -cf build.tar build
 
