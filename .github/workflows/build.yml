@@ -4,7 +4,8 @@ name: Build
 
 # Controls when the workflow will run
 on: [push, workflow_dispatch]
-
+env:
+  URL: localhost
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
@@ -27,7 +28,11 @@ jobs:
           submodules: true
 
       - name: Build Hugo Website
-        run: hugo build -b $WEBSITE_URL -d build
+        run: |
+          ls
+          echo $URL
+          hugo build -b $URL -d build
+          ls
 
       - name: Package Website
         run: tar -cf build.tar build
