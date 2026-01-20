@@ -1,0 +1,41 @@
+# This is a basic workflow to help you get started with Actions
+
+name: Build 
+
+# Controls when the workflow will run
+on: [push, workflow_dispatch]
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build_website:
+    # The type of runner that the job will run on
+    name: Build The Website Using Hugo 
+    runs-on: ubuntu-latest
+
+    steps:
+    
+      - name: Get Hugo
+        run: |
+          sudo apt update
+          sudo apt install hugo
+          
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - name: Checkout 
+        uses: actions/checkout@v4
+
+      - name: Build Hugo Website
+        run: hugo build -b $WEBSITE_URL -d build
+
+      - name: Package Website
+        run: tar -cf build.tar build
+
+      # Runs a set of commands using the runners shell
+      - name: Upload the Artifact
+        uses: actions/upload-artifact@v6.0.0
+        with:
+          name: latest-build
+          path: build.tar
+          overwrite: true
+
+      
